@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex">
+    <title>Redirecting…</title>
+  </head>
+  <body>
+    <p>Redirecting…</p>
+    <script>
+      const source = new URL(window.location.href);
+      const targetBase = "https://www.kafigonka.com";
+
+      let path = source.searchParams.get("id");
+
+      if (!path) {
+        path = source.pathname;
+      }
+
+      if (!path || path === "/") {
+        window.location.replace(targetBase + "/");
+      } else {
+        const target = new URL(targetBase);
+        target.pathname = path;
+        window.location.replace(target.href);
+      }
+    </script>
+  </body>
+</html>
